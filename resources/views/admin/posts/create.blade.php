@@ -22,8 +22,9 @@
         action="{{route('admin.posts.store')}}"
         method="POST"
         id="postsCreateForm">
-        @csrf
+            @csrf
 
+            {{-- TITLE --}}
             <div class="mb-3">
                 <label for="title" class="form-label">Titolo</label>
                 <input type="text"
@@ -42,6 +43,7 @@
 
             </div>
 
+            {{-- CONTENT --}}
             <div class="mb-3">
                 <label for="content" class="form-label">Contenuto del post</label>
                 <textarea class="form-control @error('content') is-invalid @enderror"
@@ -57,17 +59,17 @@
                 <p class="text-danger" id="error-content"></p>
             </div>
 
+            {{-- CATEGORY --}}
             <div class="mb-3">
-
                 <select name="category_id" id="category_id" class="form-select">
                     <option value="" {{old('category_id') == null ? 'selected' : ''}} >Nessuna categoria</option>
 
                     @foreach ($categories as $category)
-                    <option
-                        value="{{$category->id}}"
-                        {{old('category_id') == $category->id ? 'selected' : ''}} >
-                        {{$category->name}}
-                    </option>
+                        <option
+                            value="{{$category->id}}"
+                            {{old('category_id') == $category->id ? 'selected' : ''}} >
+                            {{$category->name}}
+                        </option>
                     @endforeach
 
                 </select>

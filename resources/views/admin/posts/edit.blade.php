@@ -5,12 +5,17 @@
         <h1>Pagina edit della CR(U)D</h1>
 
         @if ($errors->any())
+
             <div class="alert alert-danger" role="alert">
+
                 <ul>
+
                     @foreach ($errors->all() as $error)
                         <li>{{$error}}</li>
                     @endforeach
+
                 </ul>
+
             </div>
         @endif
 
@@ -21,6 +26,7 @@
             @csrf
             @method('PUT')
 
+            {{-- TITLE --}}
             <div class="mb-3">
               <label for="title" class="form-label">Titolo</label>
               <input type="text"
@@ -39,6 +45,7 @@
 
             </div>
 
+            {{-- CONTENT --}}
             <div class="mb-3">
               <label for="content" class="form-label">Contenuto del post</label>
               <textarea class="form-control @error('content') is-invalid @enderror"
@@ -53,6 +60,22 @@
               {{-- Errore gestito da Jquery --}}
               <p class="text-danger" id="error-content"></p>
 
+            </div>
+
+            {{-- CATEGORY --}}
+            <div class="mb-3">
+                <select name="category_id" id="category_id" class="form-select">
+                    <option value="" {{old('category_id', $post->category->id) == null ? 'selected' : ''}} >Nessuna categoria</option>
+
+                    @foreach ($categories as $category)
+                        <option
+                            value="{{$category->id}}"
+                            {{old('category_id', $post->category ? $post->category->id : '') == $category->id ? 'selected' : ''}} >
+                            {{$category->name}}
+                        </option>
+                    @endforeach
+
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
