@@ -1950,7 +1950,7 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_vm._v("Example Component")]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_vm._v("\n                        I'm an example component.\n                    ")])])])])]);
+  }, [_vm._v("\r\n                        I'm an example component.\r\n                    ")])])])])]);
 }];
 render._withStripped = true;
 
@@ -49357,61 +49357,45 @@ var app = new Vue({
 });
 $().ready(function () {
   // qui si mette tutto il codice JQuery e JS che avviene dopo il carimento del DOM
-  // Validazione admin.posts.create
-  $('#postsCreateForm').submit(function (event) {
-    $('#error-title').hide();
-    $('#error-content').hide();
+  formValidator($('#postsCreateForm'));
+  formValidator($('#postsEditForm'));
 
-    if ($('#title').val().length === 0) {
-      $('#error-title').show('slow').text('Il titolo è un campo obbligatorio').fadeOut(5000);
-    }
+  function formValidator(form) {
+    form.submit(function (event) {
+      $('#error-title').hide();
+      $('#error-content').hide();
+      var errors = false;
 
-    if ($('#title').val().length < 3 && $('#title').val().length != 0) {
-      $('#error-title').show('slow').text('Devi inserire almeno 3 caratteri').fadeOut(5000);
-    }
+      if ($('#title').val().length === 0) {
+        $('#error-title').show('slow').text('Il titolo è un campo obbligatorio').fadeOut(5000);
+        errors = true;
+      }
 
-    if ($('#title').val().length > 255 && $('#title').val().length != 0) {
-      $('#error-title').show('slow').text('Puoi inserire massimo 255 caratteri').fadeOut(5000);
-    }
+      if ($('#title').val().length < 3 && $('#title').val().length != 0) {
+        $('#error-title').show('slow').text('Devi inserire almeno 3 caratteri').fadeOut(5000);
+        errors = true;
+      }
 
-    if ($('#content').val().length === 0) {
-      $('#error-content').show('slow').text('Il contenuto è un campo obbligatorio').fadeOut(5000);
-    }
+      if ($('#title').val().length > 255 && $('#title').val().length != 0) {
+        $('#error-title').show('slow').text('Puoi inserire massimo 255 caratteri').fadeOut(5000);
+        errors = true;
+      }
 
-    if ($('#content').val().length < 10 && $('#content').val().length != 0) {
-      $('#error-content').show('slow').text('Devi inserire almeno 10 caratteri').fadeOut(5000);
-    }
+      if ($('#content').val().length === 0) {
+        $('#error-content').show('slow').text('Il contenuto è un campo obbligatorio').fadeOut(5000);
+        errors = true;
+      }
 
-    event.preventDefault();
-  }); //
-  // Validazione admin.posts.edit
+      if ($('#content').val().length < 10 && $('#content').val().length != 0) {
+        $('#error-content').show('slow').text('Devi inserire almeno 10 caratteri').fadeOut(5000);
+        errors = true;
+      }
 
-  $('#postsEditForm').submit(function (event) {
-    $('#error-title').hide();
-    $('#error-content').hide();
-
-    if ($('#title').val().length === 0) {
-      $('#error-title').show('slow').text('Il titolo è un campo obbligatorio').fadeOut(5000);
-    }
-
-    if ($('#title').val().length < 3 && $('#title').val().length != 0) {
-      $('#error-title').show('slow').text('Devi inserire almeno 3 caratteri').fadeOut(5000);
-    }
-
-    if ($('#title').val().length > 255 && $('#title').val().length != 0) {
-      $('#error-title').show('slow').text('Puoi inserire massimo 255 caratteri').fadeOut(5000);
-    }
-
-    if ($('#content').val().length === 0) {
-      $('#error-content').show('slow').text('Il contenuto è un campo obbligatorio').fadeOut(5000);
-    }
-
-    if ($('#content').val().length < 10 && $('#content').val().length != 0) {
-      $('#error-content').show('slow').text('Devi inserire almeno 10 caratteri').fadeOut(5000);
-    }
-
-    event.preventDefault();
-  }); //
+      if (errors) {
+        event.preventDefault();
+      }
+    });
+  }
 });
 
 /***/ }),
@@ -49548,8 +49532,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\inyok\Documents\Programmazione\Boolean\Quinto mese-LARAVEL\LARAVEL\Repository\laravel-auth\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\inyok\Documents\Programmazione\Boolean\Quinto mese-LARAVEL\LARAVEL\Repository\laravel-auth\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\inyok\Documents\Programmazione\Boolean\Quinto mese-LARAVEL\LARAVEL\Repository\laravel-one-to-many\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\inyok\Documents\Programmazione\Boolean\Quinto mese-LARAVEL\LARAVEL\Repository\laravel-one-to-many\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
