@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', "Crea nuovo post")
+
 @section('content')
     <div class="container">
         <h1>Pagina create della (C)RUD</h1>

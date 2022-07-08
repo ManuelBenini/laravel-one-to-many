@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', "Modifica post $post->title")
+
 @section('content')
     <div class="container">
         <h1>Pagina edit della CR(U)D</h1>
@@ -65,7 +67,7 @@
             {{-- CATEGORY --}}
             <div class="mb-3">
                 <select name="category_id" id="category_id" class="form-select">
-                    <option value="" {{old('category_id', $post->category->id) == null ? 'selected' : ''}} >Nessuna categoria</option>
+                    <option value="" {{old('category_id', $post->category ? $post->category->id : '') == null ? 'selected' : ''}} >Nessuna categoria</option>
 
                     @foreach ($categories as $category)
                         <option

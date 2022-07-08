@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', "Post $post->title")
+
 @section('content')
     <div class="container">
         <h1 class="mb-5">Pagina show della C(R)UD</h1>
