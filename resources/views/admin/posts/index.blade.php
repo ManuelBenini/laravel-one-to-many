@@ -5,8 +5,9 @@
         <h1>Pagina index della C(R)UD</h1>
 
         @if (session('delete_success'))
-            <div class="alert alert-danger" role="danger">
+            <div class="alert alert-danger d-flex justify-content-between" role="danger">
                 {{session('delete_success')}}
+                <a class="btn btn-danger" href="{{route('admin.posts.index')}}">X</a>
             </div>
         @endif
 
