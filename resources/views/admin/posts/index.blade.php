@@ -16,6 +16,7 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Titolo</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Azioni</th>
               </tr>
             </thead>
@@ -26,6 +27,9 @@
                     <tr>
                         <th scope="row">{{$post->id}}</th>
                         <td>{{$post->title}}</td>
+
+                        <td>{{$post->category ? $post->category->name : 'Nessuna categoria'}}</td>
+
                         <td>
                             <a class="btn btn-success" href="{{route('admin.posts.show', $post)}}">Mostra</a>
                             <a class="btn btn-primary" href="{{route('admin.posts.edit', $post)}}">Modifica</a>
@@ -40,15 +44,35 @@
                                 <button type="submit" class="btn btn-danger">Cancella</button>
                             </form>
                         </td>
-                    </tr>   
+                    </tr>
                 @endforeach
 
             </tbody>
 
-            
+
         </table>
 
         {{$posts->links()}}
+
+        <div>
+            <h2 class="mb-5">Lista pagina divise per categorie</h2>
+
+            @foreach ($categories as $category)
+                <h3>{{$category->name}}</h3>
+
+                <ul>
+
+                    @forelse ($category->posts as $post)
+                        <li> <a href="{{route('admin.posts.show', $post)}}"> {{$post->title}} </a> </li>
+                    @empty
+                        <li> Non sono presenti post per questa categoria </li>
+                    @endforelse
+
+                </ul>
+
+            @endforeach
+
+        </div>
 
     </div>
 @endsection
